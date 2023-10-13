@@ -20,8 +20,14 @@ public class Portero extends Futbolista {
         return resumen() + " con el dorsal " + this.dorsal + ". Le han marcado " + this.golesRecibidos;
     }
 
-    public int compareTo(Portero p) {
-        return Math.abs(this.golesRecibidos - p.golesRecibidos);
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Portero) {
+            Portero portero = (Portero) o;
+            return Math.abs(this.golesRecibidos - portero.golesRecibidos);
+        } else {
+            return 0;
+        }
     }
 
     public short getGolesRecibidos() {
